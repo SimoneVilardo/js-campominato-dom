@@ -2,9 +2,10 @@
 function creazioneQuadrato(){
     // CREO UNA VARIABILE CHE CREI IL DIV
     let quadrato = document.createElement('div');
-
+    
     return quadrato;
 };
+
 
 // RECUPERO DAL DOM IL BOTTONE
 const bottone = document.getElementById('btn');
@@ -15,10 +16,19 @@ let selezione = document.getElementById('difficolta');
 // RECUPERO DAL DOM L'ELEMENTO IN CUI DEVO CREARE LA GRIGLIA
 const griglia = document.getElementById('griglia');
 
+// VARIABILE DI CONTROLLO
+let giocoAttivo = true;
+
 //FACCIO IN MODO CHE CON IN CLICK APPAIA LA GRIGLIA
 bottone.addEventListener('click', function(){
     griglia.innerHTML = '';
     let difficolta = selezione.value;
+    const arrayBombe = [];
+    
+    // VARIABILE DI CONTROLLO
+    let giocoAttivo = true;
+
+
     // CONDIZIONE PER FAR APPARIRE LE VARIE GRIGLIE IN BASE ALLA DIFFICOLTA SCELTA
     if(difficolta === 'Facile'){
    
@@ -27,18 +37,44 @@ bottone.addEventListener('click', function(){
             let quadrato = creazioneQuadrato();
             // AGGIUNGO UNA CLASSE 
             quadrato.classList.add('quadrato-tre');
-    
+            
             quadrato.innerText = i + 1;
             
             // AL CLICK NEL QUADRATO ESSO CAMBIA COLORE E RESTITUISCE IN CONSOLE IL NUEMRO DELLA CASELLA
             quadrato.addEventListener('click', function(){
-                this.classList.toggle('cambio-colore');
-                console.log(quadrato.innerText)
+                
+                if(!giocoAttivo){
+                    return
+                }
+
+                if (arrayBombe.includes(i + 1)) {
+                    // SE IL NUMERO E' PRESENTE NELLA LISTA DELLE BOMBE, SI E' CLICCATA UNA BOMBA
+                    this.classList.add('bomba');
+                    alert("Hai CLICCATO una BOMBA! PARTITA TERMINATA!");
+
+                    giocoAttivo = false;
+                    
+                  } 
+                  else {
+                    this.classList.add('cambio-colore');
+                    console.log(quadrato.innerText);
+                  }
             });
             
             // MOSTRO TUTTO A SCHERMO CON .APPEND()
             griglia.append(quadrato);
+            
         };
+
+        // POPOLO L'ARRAY
+        while (arrayBombe.length < 16) {
+            const numeroCasuale = Math.floor(Math.random() * 100) + 1;
+            if (!arrayBombe.includes(numeroCasuale)) {
+              arrayBombe.push(numeroCasuale);
+            }
+          }
+          console.log(arrayBombe)
+
 
     } else if (difficolta === 'Normale'){
 
@@ -52,13 +88,38 @@ bottone.addEventListener('click', function(){
             
             // AL CLICK NEL QUADRATO ESSO CAMBIA COLORE E RESTITUISCE IN CONSOLE IL NUEMRO DELLA CASELLA
             quadrato.addEventListener('click', function(){
-                this.classList.toggle('cambio-colore');
-                console.log(quadrato.innerText)
+               
+                if(!giocoAttivo){
+                    return
+                }
+
+                if (arrayBombe.includes(i + 1)) {
+                    // SE IL NUMERO E' PRESENTE NELLA LISTA DELLE BOMBE, SI E' CLICCATA UNA BOMBA
+                    this.classList.add('bomba');
+                    alert("Hai CLICCATO una BOMBA! PARTITA TERMINATA!");
+
+                    giocoAttivo = false;
+                    
+                  } 
+                  else {
+                    this.classList.add('cambio-colore');
+                    console.log(quadrato.innerText);
+                  }
             });
             
             // MOSTRO TUTTO A SCHERMO CON .APPEND()
             griglia.append(quadrato);
         };
+        
+
+        // POPOLO L'ARRAY
+        while (arrayBombe.length < 16) {
+            const numeroCasuale = Math.floor(Math.random() * 81) + 1;
+            if (!arrayBombe.includes(numeroCasuale)) {
+              arrayBombe.push(numeroCasuale);
+            }
+          }
+          console.log(arrayBombe)
 
     } else {
         for( let i = 0; i < 49; i++){
@@ -71,14 +132,37 @@ bottone.addEventListener('click', function(){
             
             // AL CLICK NEL QUADRATO ESSO CAMBIA COLORE E RESTITUISCE IN CONSOLE IL NUEMRO DELLA CASELLA
             quadrato.addEventListener('click', function(){
-                this.classList.toggle('cambio-colore');
-                console.log(quadrato.innerText)
+               
+                if(!giocoAttivo){
+                    return
+                }
+
+                if (arrayBombe.includes(i + 1)) {
+                    // SE IL NUMERO E' PRESENTE NELLA LISTA DELLE BOMBE, SI E' CLICCATA UNA BOMBA
+                    this.classList.add('bomba');
+                    alert("Hai CLICCATO una BOMBA! PARTITA TERMINATA!");
+
+                    giocoAttivo = false;
+                    
+                  } 
+                  else {
+                    this.classList.add('cambio-colore');
+                    console.log(quadrato.innerText);
+                  }
             });
             
             // MOSTRO TUTTO A SCHERMO CON .APPEND()
             griglia.append(quadrato);
         };
-    }
-})
 
-
+        // POPOLO L'ARRAY
+        while (arrayBombe.length < 16) {
+            const numeroCasuale = Math.floor(Math.random() * 49) + 1;
+            if (!arrayBombe.includes(numeroCasuale)) {
+              arrayBombe.push(numeroCasuale);
+            }
+          }
+          console.log(arrayBombe)
+    }; 
+     
+});

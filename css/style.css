@@ -59,6 +59,7 @@ main{
     color: goldenrod;
     font-size: 25px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .quadrato{
@@ -78,4 +79,9 @@ main{
 
 .cambio-colore{
     background-color: #fff;
+}
+
+.bomba{
+    background-color: red;
+    color: white;
 }
