@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+header, #btn, footer, a, #difficolta{
+    background-color: black;
+    color: goldenrod;
+}
+
+/* HEADER */
+
+header, footer{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+h1{
+    font-size: 50px;
+}
+
+#btn, #difficolta{
+    padding: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+
+/* MAIN */
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: goldenrod;
+    padding: 50px 0;
+}
+
+#griglia{
+    display: flex;
+    flex-wrap: wrap;
+    width: 530px;
+    height: 530px;
+}
+
+.quadrato, .quadrato-due, .quadrato-tre{
+    border: 2px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+    background-color: black;
+    color: goldenrod;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.quadrato{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.quadrato-due{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.quadrato-tre{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+
+.cambio-colore{
+    background-color: #fff;
+}
