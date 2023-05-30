@@ -152,7 +152,7 @@ bottone.addEventListener('click', function(){
 
                 if (arrayBombe.includes(i)) {
                     // SE IL NUMERO E' PRESENTE NELLA LISTA DELLE BOMBE, SI E' CLICCATA UNA BOMBA
-                    quadrato.classList.add('bomba');
+                     quadrato.classList.add('bomba');
                     alert(`Hai CLICCATO una BOMBA! PARTITA TERMINATA! IL TUO PUNTEGGIO: ${clickforwin}`);
 
                     giocoAttivo = false;

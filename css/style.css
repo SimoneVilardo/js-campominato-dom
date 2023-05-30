@@ -79,9 +79,11 @@ main{
 
 .cambio-colore{
     background-color: #fff;
+    pointer-events: none;
 }
 
 .bomba{
     background-color: red;
     color: white;
+    pointer-events: none;
 }
