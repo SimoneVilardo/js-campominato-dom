@@ -21,6 +21,7 @@ let giocoAttivo = true;
 
 //FACCIO IN MODO CHE CON IN CLICK APPAIA LA GRIGLIA
 bottone.addEventListener('click', function(){
+    let clickforwin = 0;
     griglia.innerHTML = '';
     let difficolta = selezione.value;
     const arrayBombe = [];
@@ -32,13 +33,13 @@ bottone.addEventListener('click', function(){
     // CONDIZIONE PER FAR APPARIRE LE VARIE GRIGLIE IN BASE ALLA DIFFICOLTA SCELTA
     if(difficolta === 'Facile'){
    
-        for( let i = 0; i < 100; i++){
+        for( let i = 1; i <= 100; i++){
             //CREO IL SINGOLO QUADRATO
             let quadrato = creazioneQuadrato();
             // AGGIUNGO UNA CLASSE 
             quadrato.classList.add('quadrato-tre');
             
-            quadrato.innerText = i + 1;
+            quadrato.innerText = i;
             
             // AL CLICK NEL QUADRATO ESSO CAMBIA COLORE E RESTITUISCE IN CONSOLE IL NUEMRO DELLA CASELLA
             quadrato.addEventListener('click', function(){
@@ -47,17 +48,23 @@ bottone.addEventListener('click', function(){
                     return
                 }
 
-                if (arrayBombe.includes(i + 1)) {
+                if (arrayBombe.includes(i)) {
                     // SE IL NUMERO E' PRESENTE NELLA LISTA DELLE BOMBE, SI E' CLICCATA UNA BOMBA
-                    this.classList.add('bomba');
-                    alert("Hai CLICCATO una BOMBA! PARTITA TERMINATA!");
+                    quadrato.classList.add('bomba');
+                    alert(`Hai CLICCATO una BOMBA! PARTITA TERMINATA! IL TUO PUNTEGGIO: ${clickforwin}`);
 
                     giocoAttivo = false;
                     
                   } 
-                  else {
-                    this.classList.add('cambio-colore');
-                    console.log(quadrato.innerText);
+                  else if(!arrayBombe.includes(i)){
+                      quadrato.classList.add('cambio-colore');
+                      //stampa in console numero cliccato
+                      console.log(i);
+                      clickforwin++
+                      if(clickforwin === (100 - 16)){
+                          giocoAttivo = false;
+                          alert('COMPLIMENTI! HAI VINTO!')
+                      }
                   }
             });
             
@@ -78,13 +85,13 @@ bottone.addEventListener('click', function(){
 
     } else if (difficolta === 'Normale'){
 
-        for( let i = 0; i < 81; i++){
+        for( let i = 1; i <= 81; i++){
             //CREO IL SINGOLO QUADRATO
             let quadrato = creazioneQuadrato();
             // AGGIUNGO UNA CLASSE 
             quadrato.classList.add('quadrato-due');
     
-            quadrato.innerText = i + 1;
+            quadrato.innerText = i;
             
             // AL CLICK NEL QUADRATO ESSO CAMBIA COLORE E RESTITUISCE IN CONSOLE IL NUEMRO DELLA CASELLA
             quadrato.addEventListener('click', function(){
@@ -93,18 +100,24 @@ bottone.addEventListener('click', function(){
                     return
                 }
 
-                if (arrayBombe.includes(i + 1)) {
+                if (arrayBombe.includes(i)) {
                     // SE IL NUMERO E' PRESENTE NELLA LISTA DELLE BOMBE, SI E' CLICCATA UNA BOMBA
-                    this.classList.add('bomba');
-                    alert("Hai CLICCATO una BOMBA! PARTITA TERMINATA!");
+                    quadrato.classList.add('bomba');
+                    alert(`Hai CLICCATO una BOMBA! PARTITA TERMINATA! IL TUO PUNTEGGIO: ${clickforwin}`);
 
                     giocoAttivo = false;
                     
                   } 
-                  else {
-                    this.classList.add('cambio-colore');
-                    console.log(quadrato.innerText);
-                  }
+                  else if(!arrayBombe.includes(i)){
+                    quadrato.classList.add('cambio-colore');
+                    //stampa in console numero cliccato
+                    console.log(i);
+                    clickforwin++
+                    if(clickforwin === (81 - 16)){
+                        giocoAttivo = false;
+                        alert('COMPLIMENTI! HAI VINTO!')
+                    }
+                }
             });
             
             // MOSTRO TUTTO A SCHERMO CON .APPEND()
@@ -122,13 +135,13 @@ bottone.addEventListener('click', function(){
           console.log(arrayBombe)
 
     } else {
-        for( let i = 0; i < 49; i++){
+        for( let i = 1; i <= 49; i++){
             //CREO IL SINGOLO QUADRATO
             let quadrato = creazioneQuadrato();
             // AGGIUNGO UNA CLASSE 
             quadrato.classList.add('quadrato');
     
-            quadrato.innerText = i + 1;
+            quadrato.innerText = i;
             
             // AL CLICK NEL QUADRATO ESSO CAMBIA COLORE E RESTITUISCE IN CONSOLE IL NUEMRO DELLA CASELLA
             quadrato.addEventListener('click', function(){
@@ -137,18 +150,24 @@ bottone.addEventListener('click', function(){
                     return
                 }
 
-                if (arrayBombe.includes(i + 1)) {
+                if (arrayBombe.includes(i)) {
                     // SE IL NUMERO E' PRESENTE NELLA LISTA DELLE BOMBE, SI E' CLICCATA UNA BOMBA
-                    this.classList.add('bomba');
-                    alert("Hai CLICCATO una BOMBA! PARTITA TERMINATA!");
+                    quadrato.classList.add('bomba');
+                    alert(`Hai CLICCATO una BOMBA! PARTITA TERMINATA! IL TUO PUNTEGGIO: ${clickforwin}`);
 
                     giocoAttivo = false;
                     
                   } 
-                  else {
-                    this.classList.add('cambio-colore');
-                    console.log(quadrato.innerText);
-                  }
+                  else if(!arrayBombe.includes(i)){
+                    quadrato.classList.add('cambio-colore');
+                    //stampa in console numero cliccato
+                    console.log(i);
+                    clickforwin++
+                    if(clickforwin === (49 - 16)){
+                        giocoAttivo = false;
+                        alert('COMPLIMENTI! HAI VINTO!')
+                    }
+                }
             });
             
             // MOSTRO TUTTO A SCHERMO CON .APPEND()
